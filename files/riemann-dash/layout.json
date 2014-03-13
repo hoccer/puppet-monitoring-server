@@ -1,0 +1,492 @@
+{
+  "server": "monitoring-server.hoccer.de:5556",
+  "server_type": "ws",
+  "workspaces": [
+    {
+      "name": "production",
+      "view": {
+        "type": "Balloon",
+        "weight": 1,
+        "child": {
+          "type": "VStack",
+          "weight": 1,
+          "children": [
+            {
+              "type": "Title",
+              "weight": 0.0625,
+              "title": "Production Servers"
+            },
+            {
+              "type": "HStack",
+              "weight": 1,
+              "children": [
+                {
+                  "type": "VStack",
+                  "weight": 1,
+                  "children": [
+                    {
+                      "type": "HStack",
+                      "weight": 1,
+                      "children": [
+                        {
+                          "type": "VStack",
+                          "weight": 1,
+                          "children": [
+                            {
+                              "type": "Gauge",
+                              "weight": 0.5,
+                              "title": "Talk-Server Connections",
+                              "query": "service=\"com.hoccer.talk.server.TalkServer.connectionsOpen\" and \r\nhost =~ \"server%.talk.hoccer.de\" "
+                            },
+                            {
+                              "type": "Flot",
+                              "weight": 1,
+                              "title": "Talk-Server Connections",
+                              "query": "service=\"com.hoccer.talk.server.TalkServer.connectionsOpen\" and\r\nhost =~ \"server%.talk.hoccer.de\"",
+                              "timeRange": 300,
+                              "graphType": "line",
+                              "stackMode": "false"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "VStack",
+                          "weight": 1,
+                          "children": [
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Srp1 Success",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.client-logins-srp1-succeeded-meter m%_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp1-succeeded-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp1-succeeded-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp1-succeeded-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Srp1 Failures",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.client-logins-srp1-failed-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp1-failed-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp1-failed-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp1-failed-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Srp2 Success",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.client-logins-srp2-succeeded-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp2-succeeded-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp2-succeeded-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp2-succeeded-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Srp2 Failures",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.client-logins-srp2-failed-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp2-failed-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp2-failed-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-logins-srp2-failed-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "HStack",
+                      "weight": 1,
+                      "children": [
+                        {
+                          "type": "VStack",
+                          "weight": 1,
+                          "children": [
+                            {
+                              "type": "Title",
+                              "weight": 0.25,
+                              "title": "Client Registrations / sec."
+                            },
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Success",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.client-registrations-succeeded-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-registrations-succeeded-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-registrations-succeeded-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-registrations-succeeded-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Failure",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.client-registrations-failed-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-registrations-failed-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-registrations-failed-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.client-registrations-failed-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "VStack",
+                          "weight": 1,
+                          "children": [
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Msg Accepts",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.message-accepts-succeeded-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-accepts-succeeded-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-accepts-succeeded-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-accepts-succeeded-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Msg Confirms",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.message-confirmations-succeeded-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-confirmations-succeeded-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-confirmations-succeeded-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-confirmations-succeeded-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "HStack",
+                              "weight": 1,
+                              "children": [
+                                {
+                                  "type": "Flot",
+                                  "weight": 2,
+                                  "title": "Msg Acks",
+                                  "query": "service =~ \"com.hoccer.talk.server.TalkServer.message-acknowledgements-succeeded-meter%rate\" and \r\nhost =~ \"server%.talk.hoccer.de\"",
+                                  "timeRange": 300,
+                                  "graphType": "line",
+                                  "stackMode": "false"
+                                },
+                                {
+                                  "type": "VStack",
+                                  "weight": 1,
+                                  "children": [
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "1 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-acknowledgements-succeeded-meter m1_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "5 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-acknowledgements-succeeded-meter m5_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    },
+                                    {
+                                      "type": "Gauge",
+                                      "weight": 1,
+                                      "title": "15 min. rate",
+                                      "query": "service=\"com.hoccer.talk.server.TalkServer.message-acknowledgements-succeeded-meter m15_rate\" and \r\nhost =~ \"server%.talk.hoccer.de\""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "VStack",
+                  "weight": 0.5,
+                  "children": [
+                    {
+                      "type": "Grid",
+                      "weight": 2,
+                      "title": "Health",
+                      "query": "service=\"cpu\" or service=\"memory\" or service=\"load\"",
+                      "max": "",
+                      "rows": "",
+                      "cols": ""
+                    },
+                    {
+                      "type": "Grid",
+                      "weight": 2,
+                      "title": "Disks",
+                      "query": "service =~ \"disk %\"",
+                      "max": "",
+                      "rows": "",
+                      "cols": ""
+                    },
+                    {
+                      "type": "HStack",
+                      "weight": 2,
+                      "children": [
+                        {
+                          "type": "Flot",
+                          "weight": 1,
+                          "title": "Ping Latency (sec)",
+                          "query": "service =~ \"com.hoccer.talk.server.ping.PingAgent.latency p%\" and\r\nhost =~ \"server%.talk.hoccer.de\"",
+                          "timeRange": 300,
+                          "graphType": "line",
+                          "stackMode": "false"
+                        },
+                        {
+                          "type": "Flot",
+                          "weight": 1,
+                          "title": "Ping / sec.",
+                          "query": "service =~ \"com.hoccer.talk.server.ping.PingAgent.latency m%_rate\" and\r\nhost =~ \"server%.talk.hoccer.de\"",
+                          "timeRange": 300,
+                          "graphType": "line",
+                          "stackMode": "false"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "4b273b39dec6af45914724c28ee94d1ce0e3e494"
+    }
+  ]
+}
