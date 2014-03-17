@@ -13,9 +13,14 @@ class monitoring-server::install {
     rvm_ruby_string => 'ruby-2.0.0-p353'
   }
 
+
+  class { 'nginx': }
+
+
   include riemann
   include riemann::dash
   include riemann::tools
+  include nginx
 
 }
 
