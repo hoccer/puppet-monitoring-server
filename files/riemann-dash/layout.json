@@ -1,5 +1,5 @@
 {
-  "server": "monitoring-server.hoccer.de:5556",
+  "server": "riemann-dash.hoccer.de:443",
   "server_type": "ws",
   "workspaces": [
     {
