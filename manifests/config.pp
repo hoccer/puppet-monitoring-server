@@ -93,6 +93,29 @@ class monitoring-server::config {
     ],
   }
 
+  nginx::resource::location { 'pnp4nagios_loc':
+    location                   => '/pnp4nagios',
+    vhost                      => 'nagios.hoccer.de',
+    location_alias             => '/usr/share/pnp4nagios/html',
+    ssl                        => true,
+    ssl_only                   => true,
+  }
+
+  nginx::resource::location { 'pnp4nagios_php_loc':
+    location                   => '~ ^(/pnp4nagios.*\.php)(.*)$',
+    vhost                      => 'nagios.hoccer.de',
+    www_root                   => '/usr/share/pnp4nagios/html',
+    fastcgi                    => 'php',
+    fastcgi_script             => '$document_root/index.php',
+    ssl                        => true,
+    ssl_only                   => true,
+    location_custom_cfg_append => [
+      'fastcgi_split_path_info ^(.+\.php)(.*)$;',
+      'fastcgi_param PATH_INFO $fastcgi_path_info;',
+    ],
+  }
+
+
   nginx::resource::upstream { 'ntop':
     members => [
       'localhost:3000',
