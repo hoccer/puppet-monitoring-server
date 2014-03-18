@@ -123,7 +123,7 @@ class monitoring-server::config {
   }
 
   nginx::resource::vhost { 'ntop.hoccer.de':
-    proxy => 'http://ntop',
+    proxy                => 'http://ntop',
     listen_port          => 443,
     ssl                  => true,
     ssl_cert             => '/etc/ssl/certs/ssl-cert-snakeoil.pem',
@@ -131,7 +131,21 @@ class monitoring-server::config {
     ssl_port             => 443,
     auth_basic           => 'NTOP',
     auth_basic_user_file => '/etc/nagios3/htpasswd.users',
+    proxy_set_header     => [
+      'X-Real-IP $remote_addr',
+      'Host $host',
+      'X-Forwarded-For $remote_addr',
+    ],
   }
+
+  nginx::resource::location { 'ntop_images_loc':
+    location       => '/images',
+    vhost          => 'ntop.hoccer.de',
+    location_alias => '/usr/share/pnp4nagios/html/media/css/ui-smoothness/images',
+    ssl            => true,
+    ssl_only       => true,
+  }
+
 
   nginx::resource::upstream { 'riemann-dash':
     members => [
