@@ -185,7 +185,13 @@ class monitoring-server::config {
     ],
     vhost_cfg_append     => {
       'proxy_http_version' => '1.1',
+      'satisfy'            => 'any',
     },
+    location_allow       => [
+      '10.1.0.0/22',
+      '10.1.5.0/24',
+      '10.1.8.0/24',
+    ],
   }
 
 
