@@ -49,7 +49,7 @@ class monitoring-server::config {
     ssl_key              => '/etc/ssl/private/ssl-cert-snakeoil.key',
     ssl_port             => 443,
     auth_basic           => 'Nagios',
-    auth_basic_user_file => '/etc/nagios3/htpasswd.users',
+    auth_basic_user_file => '/etc/nagios3/nagios.htpasswd',
     index_files          => ['index.php', 'index.html'],
     www_root             => '/usr/share/nagios3/htdocs',
     use_default_location => false,
@@ -130,7 +130,7 @@ class monitoring-server::config {
     ssl_key              => '/etc/ssl/private/ssl-cert-snakeoil.key',
     ssl_port             => 443,
     auth_basic           => 'NTOP',
-    auth_basic_user_file => '/etc/nagios3/htpasswd.users',
+    auth_basic_user_file => '/etc/ntop/ntop.htpasswd',
     proxy_set_header     => [
       'X-Real-IP $remote_addr',
       'Host $host',
@@ -166,6 +166,8 @@ class monitoring-server::config {
     ssl_cert             => '/etc/ssl/certs/ssl-cert-snakeoil.pem',
     ssl_key              => '/etc/ssl/private/ssl-cert-snakeoil.key',
     ssl_port             => 443,
+    auth_basic           => 'Riemann-Dash',
+    auth_basic_user_file => '/etc/riemann-dash.htpasswd',
     proxy_set_header     => [
       'Upgrade $http_upgrade',
       'Connection "upgrade"',
