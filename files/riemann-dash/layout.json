@@ -1,6 +1,6 @@
 {
   "server": "riemann-dash.hoccer.de:443",
-  "server_type": "sse",
+  "server_type": "ws",
   "workspaces": [
     {
       "name": "production",
