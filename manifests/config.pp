@@ -159,8 +159,24 @@ class monitoring-server::config {
     ],
   }
 
+  nginx::resource::upstream { 'riemann-sse':
+    members => [
+      'localhost:5558',
+    ],
+  }
+  
+  nginx::resource::map { 'ws_sse':
+    expression => '$http_upgrade$http_accept',
+    variable   => '$my_upstream',
+    map => {
+      'default'           => 'riemann-dash', 
+      '~websocket'         => 'riemann-websocket', 
+      '~text/event-stream' => 'riemann-sse' 
+    }
+  }
+
   nginx::resource::vhost { 'riemann-dash.hoccer.de':
-    proxy => 'http://riemann-websocket',
+    proxy                => 'http://$my_upstream',
     listen_port          => 443,
     ssl                  => true,
     ssl_cert             => '/etc/ssl/certs/ssl-cert-snakeoil.pem',
@@ -175,16 +191,9 @@ class monitoring-server::config {
       'Host $host',
       'X-Forwarded-For $proxy_add_x_forwarded_for',
     ],
-    location_conditions  => [
-      'if ($http_upgrade = "websocket") {
-          proxy_pass http://riemann-websocket;
-      }',
-      'if ($http_upgrade != "websocket") {
-          proxy_pass http://riemann-dash;
-      }',
-    ],
     vhost_cfg_append     => {
       'proxy_http_version' => '1.1',
+      'proxy_buffering'    => 'off',
       'satisfy'            => 'any',
     },
     location_allow       => [
