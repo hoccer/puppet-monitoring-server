@@ -45,8 +45,8 @@ class monitoring-server::config {
   nginx::resource::vhost { 'nagios.hoccer.de':
     listen_port          => 443,
     ssl                  => true,
-    ssl_cert             => '/etc/ssl/certs/ssl-cert-snakeoil.pem',
-    ssl_key              => '/etc/ssl/private/ssl-cert-snakeoil.key',
+    ssl_cert             => '/etc/ssl/certs/nagios.hoccer.de.crt',
+    ssl_key              => '/etc/ssl/private/nagios.hoccer.de.key',
     ssl_port             => 443,
     auth_basic           => 'Nagios',
     auth_basic_user_file => '/etc/nagios3/nagios.htpasswd',
