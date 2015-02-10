@@ -48,6 +48,7 @@ class monitoring-server::config {
     ssl_cert             => '/etc/ssl/certs/star.hoccer.de.crt',
     ssl_key              => '/etc/ssl/private/star.hoccer.de.key',
     ssl_port             => 443,
+    ssl_protocols        => 'TLSv1 TLSv1.1 TLSv1.2',
     auth_basic           => 'Nagios',
     auth_basic_user_file => '/etc/nagios3/nagios.htpasswd',
     index_files          => ['index.php', 'index.html'],
@@ -129,6 +130,7 @@ class monitoring-server::config {
     ssl_cert             => '/etc/ssl/certs/star.hoccer.de.crt',
     ssl_key              => '/etc/ssl/private/star.hoccer.de.key',
     ssl_port             => 443,
+    ssl_protocols        => 'TLSv1 TLSv1.1 TLSv1.2',
     auth_basic           => 'NTOP',
     auth_basic_user_file => '/etc/ntop/ntop.htpasswd',
     proxy_set_header     => [
@@ -182,6 +184,7 @@ class monitoring-server::config {
     ssl_cert             => '/etc/ssl/certs/star.hoccer.de.crt',
     ssl_key              => '/etc/ssl/private/star.hoccer.de.key',
     ssl_port             => 443,
+    ssl_protocols        => 'TLSv1 TLSv1.1 TLSv1.2',
     auth_basic           => 'Riemann-Dash',
     auth_basic_user_file => '/etc/riemann-dash.htpasswd',
     proxy_set_header     => [
